@@ -87,7 +87,13 @@ For UI changes, also drive the page with the preinstalled Playwright/Chromium (o
 
 ## Workflow
 
-- The owner works directly on `main`: make the change, run `node tests/run.js` (plus a browser check for UI work), commit, push.
+- **Commit and push directly to `main`.** Don't create feature branches or open pull requests
+  unless the owner asks for one.
+- Claude Code setups (the web version especially) may create their own working branch for the
+  session. Even then, don't use that branch: commit on `main` and push `main`
+  (`git push origin HEAD:main`). Don't push the session branch.
+- This is a solo project: branches and PRs add very little here and create unwanted overhead.
+- Make the change, run `node tests/run.js` (plus a browser check for UI work), commit, push.
 - CI (`test.yml`) runs the suite with bash, zsh, fish and PowerShell. `pages.yml` deploys `index.html`, `manifest.webmanifest`, `sw.js`, `css/`, `js/`, `icons/` and `LICENSE` to GitHub Pages after `test` passes on `main`, or on manual dispatch.
 - After pushing, confirm CI (and the Pages deploy) went green.
 - License: MIT.
